@@ -1,0 +1,96 @@
+<div nz-row class="main-section">
+    <div nz-col nzXs="0" nzSm="0" nzMd="0" nzLg="0" nzXl="12" class="left-section bg-primary-900">
+        <div class="section-inner">
+            <div class="compay-desc w-full p-20">
+                <p class="text-xl text-white"></p>
+                <p class="text-white">
+
+            </div>
+        </div>
+        <img class="bg-cover" src="assets/img/bg1.jpg">
+    </div>
+    <div nz-col nzXs="0" nzSm="0" nzMd="0" nzLg="0" nzXl="12" class="right-section bg-white">
+        <div class="section-inner">
+            <div class="compay-desc w-full px-48 justify-center">
+                <span class="text-3xl mb-0">Log In to <span class="text-primary font-medium">Golden Bridge
+                        Portal</span></span>
+                <ng-container *ngTemplateOutlet="rightContent"></ng-container>
+            </div>
+        </div>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24" nzXl="0" class="mobile-section bg-white">
+        <div class="section-inner">
+            <div class="compay-desc w-full my-10">
+                <ng-container *ngTemplateOutlet="rightContent"></ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #rightContent>
+    <div class="mx-auto block sm:block md:block lg:block xl:hidden">
+        <img src="assets/logo.svg" class="h-40" />
+    </div>
+    <ng-container *ngIf="isActivated">
+        <div class="w-full" [ngClass]="{'p-5' : isMobileView}">
+            <div [ngClass]="{'mobile-content my-10 p-5' : isMobileView}">
+                <div class="my-5 text-white text-xl text-center uppercase text-primary font-medium"></div>
+                <form nz-form [formGroup]="loginForm" *ngIf="loginForm" (submit)="login()">
+                    <div nz-row nzGutter="16" nzAlign="middle">
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzErrorTip="Valid Email is Required">
+                                    <nz-input-group [nzPrefix]="prefixEmail" nzSize="large">
+                                        <input type="email" nz-input formControlName="username"
+                                            placeholder="Enter your Email Address" />
+                                    </nz-input-group>
+                                    <ng-template #prefixEmail><i nz-icon nzType="mail"></i></ng-template>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzErrorTip="Password is Required">
+
+                                    <nz-input-group [nzPrefix]="prefixPassword" nzSize="large">
+                                        <input [type]="passwordVisible ? 'text' : 'password'" nzSize="large" nz-input
+                                            formControlName="password" placeholder="Enter your Password" />
+                                    </nz-input-group>
+                                    <ng-template #prefixPassword><i nz-icon nzType="key"></i></ng-template>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="text-center">
+                            <label nz-checkbox formControlName="remember">Remember me</label>
+                        </div>
+                        <div>
+                            <button type="submit" nz-button nzType="primary" nzSize="large" nzBlock type="submit"
+                                [nzLoading]="formSpinner">
+                                <i nz-icon nzType="login" nzTheme="outline"></i> SIGN IN
+                            </button>
+                        </div>
+                    </div>
+                    <div class="my-3">
+                        <nz-alert *ngIf="error" nzType="error" [nzMessage]="errorMsg" nzShowIcon></nz-alert>
+                        <ng-template #errorMsg>
+                            <div [innerHtml]="error"></div>
+                        </ng-template>
+                    </div>
+
+                    <div class="mt-3 text-center">
+                        <a [routerLink]="[ '/auth/forgot-password']"><span class="hover:underline">Forgot
+                                Password?</span></a>
+                    </div>
+                    <div class="mt-12 text-center">
+                        <span>© 2022 All Rights Reserved. <a href=""></a> is a product of Golden Bridge. <a
+                                href="">Cookie Preferences,
+                                Privacy and Terms.</a></span>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </ng-container>
+</ng-template>
