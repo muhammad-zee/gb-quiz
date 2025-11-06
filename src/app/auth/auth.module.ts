@@ -9,6 +9,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { LoginComponent } from './login/login.component';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { LoginComponent } from './login/login.component';
     NzButtonModule,
     NzCardModule,
     NzIconModule,
-    NzGridModule
+    NzGridModule,
+    NzAlertModule
   ]
 })
 export class AuthModule { }

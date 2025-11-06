@@ -8,7 +8,8 @@ import { AuthResponse, AuthService } from '../auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss'],
+  standalone: false,
 })
 export class LoginComponent implements OnInit {
 
@@ -20,12 +21,13 @@ export class LoginComponent implements OnInit {
 
   formSpinner = signal(false);
   error = signal<string | null>(null);
-  passwordVisible = signal(false);
   isMobileView = signal(window.innerWidth <= 1024);
   loginForm: FormGroup;
   returnUrl: string | null = null;
   activeColor = '#fbaf3a';
   favouritesColor = '#fdd835';
+  isActivated: boolean = false;
+  passwordVisible: boolean = false;
 
   constructor() {
     this.title.setTitle('Login');

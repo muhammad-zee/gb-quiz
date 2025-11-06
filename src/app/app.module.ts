@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { RouterModule } from '@angular/router';
+import { routes } from './app.routes';
 
 registerLocaleData(en);
 
@@ -23,6 +25,7 @@ registerLocaleData(en);
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule.forChild(routes),
 
     // App's Root Routing
     AppRoutingModule
